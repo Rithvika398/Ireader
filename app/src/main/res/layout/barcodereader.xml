@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/eye"
+    android:orientation="vertical"
+    android:id="@+id/linearlayout">
+
+    <TextView
+
+        android:id="@+id/textscan"
+        android:layout_width="93dp"
+        android:layout_height="56dp"
+        android:text="Scan"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="138dp" />
+    <Button
+        android:id="@+id/scanner"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="scanQR"
+        android:text="QR Code"
+        android:textSize="18dp"/>
+
+    <Button
+        android:id="@+id/scanner2"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="scanBar"
+        android:text="Bar Code"
+        android:textSize="18dp"/>
+</LinearLayout>
