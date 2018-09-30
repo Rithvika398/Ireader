@@ -9,6 +9,8 @@
     tools:context="com.example.rithvikaiyer.ireader.Views.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+
+
     <TextView
         android:layout_width="250dp"
         android:layout_height="100dp"
@@ -22,5 +24,35 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.909" />
+
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:id="@+id/startspeak"
+        android:text="Speak"
+        android:textSize="30dp"
+        android:onClick="speakmethod"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:id="@+id/stopspeak"
+        android:text="Stop"
+        android:textSize="30dp"
+        android:onClick="speakmethod"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        />
 
 </android.support.constraint.ConstraintLayout>

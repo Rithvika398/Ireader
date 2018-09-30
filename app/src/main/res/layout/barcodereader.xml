@@ -35,4 +35,14 @@
         android:onClick="scanBar"
         android:text="Bar Code"
         android:textSize="18dp"/>
+
+    <Button
+        android:id="@+id/productspeak"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="speakmethod"
+        android:text="Product Details"
+        android:textSize="18dp"/>
 </LinearLayout>

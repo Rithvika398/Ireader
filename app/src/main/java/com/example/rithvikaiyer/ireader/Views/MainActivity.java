@@ -2,6 +2,7 @@ package com.example.rithvikaiyer.ireader.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -15,13 +16,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.rithvikaiyer.ireader.R;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FragmentManager fm;
+    TextToSpeech ttsobj;
+    int result;
+    EditText et;
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,22 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+       // et=(EditText)(findViewById(R.id.text)) ;
+
+        ttsobj= new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if(i==TextToSpeech.SUCCESS)
+                {
+                    result=ttsobj.setLanguage(Locale.ENGLISH);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"Feature not supported by this version",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -47,6 +72,43 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    public void speakmethod(View v)
+    {
+          switch (v.getId()) {
+              case R.id.startspeak:
+                  if(result==TextToSpeech.LANG_NOT_SUPPORTED|| result==TextToSpeech.LANG_MISSING_DATA)
+                  {
+                      Toast.makeText(MainActivity.this,"Feature not supported by this version",Toast.LENGTH_SHORT).show();
+
+                  }
+                  else {
+                      //text=et.getText().toString();
+                      text =getResources().getString(R.string.welcomeintro);
+                      ttsobj.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                  }
+                  break;
+
+              case R.id.stopspeak:
+                   if(ttsobj!=null)
+                   {
+                       ttsobj.stop();
+                   }
+                  break;
+
+          }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(ttsobj!=null)
+        {
+            ttsobj.stop();
+        }
+        ttsobj.shutdown();
+
     }
 
     @Override
